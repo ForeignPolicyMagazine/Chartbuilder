@@ -1,6 +1,6 @@
-nprapps Chartbuilder fork
+PolitiFact's Chartbuilder fork
 =========================
 
-This is our fork of Quartz's Chartbuilder project. We'll be customizing it beyond the scope of a normal downstream fork.
+This will become PolitiFact's Chartbuilder implmentation, based on NPR's fork of Quartz's Chartbuilder project.
 
 For the original Chartbuilder README see `Chartbuilder_README.md`.
