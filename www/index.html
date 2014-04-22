@@ -4,14 +4,14 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Chartbuilder</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Chartbuilder</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
-		<!-- favicon updates through js -->
-		<link id="favicon" rel="shortcut icon" type="image/png" href="" />
+        <!-- favicon updates through js -->
+        <link id="favicon" rel="shortcut icon" type="image/png" href="" />
 
 
     <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js"></script>
@@ -31,22 +31,22 @@
         });
     </script>
 
-		<!-- Libraries CSS -->
-		<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/chosen.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/colorPicker.css" type="text/css" media="screen" charset="utf-8">
+        <!-- Libraries CSS -->
+        <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/chosen.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/colorPicker.css" type="text/css" media="screen" charset="utf-8">
 
-		<!-- Chartbuilder CSS -->
+        <!-- Chartbuilder CSS -->
     <link rel="stylesheet" href="css/chartbuilder.css" type="text/css" media="screen" charset="utf-8">
-		<link rel="stylesheet" href="css/gneisschart.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="css/gneisschart.css" type="text/css" media="screen" charset="utf-8">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
 
-	</head>
-	<body>
-		<!-- Add your site or application content here -->
+    </head>
+    <body>
+        <!-- Add your site or application content here -->
 
 
     <nav class="tools">
@@ -59,9 +59,11 @@
                 </a>
             </span>
         </h1>
-        <a class="toolkit-link" href="http://tools.apps.npr.org">
-            <span class="logo-wrapper"><img src="http://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR" /></span>
-            Newsroom Toolkit
+        <a class="toolkit-link" href="http://www.politifact.com/">
+            <!-- <span class="logo-wrapper">
+                <img src="http://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR" />
+            </span> -->
+            PolitiFact Toolkit
         </a>
     </nav>
     <div class="main-wrapper">
@@ -74,9 +76,9 @@
         <p>Not getting the results you need? Email <a href="mailto:nprapps@npr.org">nprapps@npr.org</a> for help or to request a custom chart!</p>
 
       </div>
-  		<div id="main">
-  		  <div id="rightColumn" class="container">
-  			<div class="cbInner">
+        <div id="main">
+          <div id="rightColumn" class="container">
+            <div class="cbInner">
 
             <div id="previous-charts" class="row">
               <div class="form-group col-md-6">
@@ -91,10 +93,10 @@
               </div>
             </div>
 
-    		    <div id="import" class="row">
+                <div id="import" class="row">
 
               <div class="col-xs-12 col-md-12">
-               	<div class="inputGroup">
+                <div class="inputGroup">
 
                   <div class="row">
                     <div class="col-md-12">
@@ -113,7 +115,7 @@
                      <table border=0 class="table table-bordered table-striped table-responsive">
                      </table>
                   </div>
-               	</div>
+                </div>
               </div>
             </div>
             <div id="chart-options" class="row">
@@ -141,13 +143,13 @@
                   <label class="col-md-3 series-colors control-label">Select Series Colors</label>
                   <div id="seriesItems" class="col-md-9"></div>
                 </div>
-      				</div>
+                    </div>
             </div>
             <div id="axis-options" class="row">
-      				<div class="form-horizontal col-md-12">
+                    <div class="form-horizontal col-md-12">
                 <div class="inputGroup">
-     			<h2><span class="step-header">3</span> <span id="axis-title">Vertical Axis Options</span></h2>
-      			<div id="rightAxisControls form-inline">
+                <h2><span class="step-header">3</span> <span id="axis-title">Vertical Axis Options</span></h2>
+                <div id="rightAxisControls form-inline">
                     <div class="form-group">
                       <label class="col-md-3 control-label" for="axis_interval">Tick Interval</label>
                       <div class="col-md-5">
@@ -156,14 +158,14 @@
                       <p class="help-block col-md-4"></p>
                       <p class="control-instructions col-md-5 col-md-offset-3">The space between the axis lines, e.g. 0.25, 5, 100.</p>
                     </div>
-      				<div class="form-group">
+                    <div class="form-group">
                       <label class="col-md-3 control-label" for="right_axis_max">Maximum</label>
                       <div class="col-md-5">
                         <input type="text" class="form-control" name="right_axis_max" value="" id="right_axis_max" placeholder="(optional)">
                       </div>
                       <p class="help-block col-md-4"></p>
                     </div>
-      							<div class="form-group">
+                                <div class="form-group">
                       <label class="col-md-3 control-label" for="right_axis_min">Minimum</label>
                       <div class="col-md-5">
                         <input type="text" class="form-control" name="right_axis_min" value="" id="right_axis_min" placeholder="(optional)">
@@ -213,9 +215,9 @@
                   </ul>
               </div>
             </div>
-  			</div>
+            </div>
         <div id="blankColumn" class="column"></div>
-  		</div>
+        </div>
     </div>
 
     <span id="font-sample">This only exists to force the fonts to load.</span>
@@ -242,18 +244,18 @@
     </div><!-- /.modal -->
 
         <!-- Libraries JS -->
-		<script src="js/lib/modernizr.js" charset="utf-8"></script>
-		<script src="js/lib/jquery.js" charset="utf-8"></script>
-		<script src="js/lib/d3.v2.js" charset="utf-8"></script>
+        <script src="js/lib/modernizr.js" charset="utf-8"></script>
+        <script src="js/lib/jquery.js" charset="utf-8"></script>
+        <script src="js/lib/d3.v2.js" charset="utf-8"></script>
         <script src="js/lib/canvg.js" charset="utf-8"></script>
-		<script src="js/lib/rgbcolor.js" charset="utf-8"></script>
-		<script src="js/lib/jquery.colorPicker.js" charset="utf-8"></script>
-		<script src="js/lib/csvkit.js" charset="utf-8"></script>
-		<script src="js/lib/chosen.jquery.min.js" charset="utf-8"></script>
+        <script src="js/lib/rgbcolor.js" charset="utf-8"></script>
+        <script src="js/lib/jquery.colorPicker.js" charset="utf-8"></script>
+        <script src="js/lib/csvkit.js" charset="utf-8"></script>
+        <script src="js/lib/chosen.jquery.min.js" charset="utf-8"></script>
         <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
 
-		<!-- Chartbuilder JS -->
-		<script src="js/gneisschart.js" charset="utf-8"></script>
-		<script src="js/chartbuilder.js"></script>
-	</body>
+        <!-- Chartbuilder JS -->
+        <script src="js/gneisschart.js" charset="utf-8"></script>
+        <script src="js/chartbuilder.js"></script>
+    </body>
 </html>
