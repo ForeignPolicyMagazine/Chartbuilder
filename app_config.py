@@ -30,9 +30,9 @@ PROJECT_FILENAME = 'chartbuilder'
 """
 DEPLOYMENT
 """
-PRODUCTION_S3_BUCKETS = ['tools.apps.npr.org']
-STAGING_S3_BUCKETS = ['stage-tools.apps.npr.org']
-ASSETS_S3_BUCKET = 'assets.apps.npr.org'
+PRODUCTION_S3_BUCKETS = ['tools.politifact.com']
+STAGING_S3_BUCKETS = ['stage-tools.politifact.com']
+ASSETS_S3_BUCKET = 'assets.politifact.com'
 
 PRODUCTION_SERVERS = ['cron.nprapps.org']
 STAGING_SERVERS = ['50.112.92.131']
