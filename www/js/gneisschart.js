@@ -84,6 +84,11 @@ var Gneiss = {
             .attr('transform','translate(' + g.basePadding.left + ',25)')
             .text(g.title);
 
+        g.sourceLine = g.chart.append('text')
+            .attr('id','sourceLine')
+            .attr('transform','translate(' + g.basePadding.left + ',479)')
+            .text(g.source);
+
         g.seriesContainer = g.chart.append('g')
             .attr('id','seriesContainer');
 

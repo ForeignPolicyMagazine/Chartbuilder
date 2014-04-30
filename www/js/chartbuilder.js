@@ -6,6 +6,7 @@ var chart;
 var SAMPLE_CHART = {
     typePicker: 'column',
     chart_title: 'Sample data',
+    chart_source: 'The Wall Street Journal',
     name: 'Sample data',
     created: (new Date()).valueOf(),
     csvInput: "\
@@ -313,6 +314,14 @@ ChartBuilder = {
             $('#chart_title').fieldMessage('has-error','Chart must have a title.');
         } else {
             $('#chart_title').clearFieldMessage();
+        }
+
+        chart.g.source = 'Source: ' + $("#chart_source").val();
+        chart.g.sourceLine.text(chart.g.source)
+        if (chart.g.source === ''){
+            $('#chart_source').fieldMessage('has-error','Chart must have a source.');
+        } else {
+            $('#chart_source').clearFieldMessage();
         }
 
         // Prefix/suffix
