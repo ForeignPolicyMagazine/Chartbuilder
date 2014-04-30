@@ -14,8 +14,8 @@ var defaultGneissChartConfig = {
     type: 'line',
     basePadding : {
         top: 0,
-        bottom: 40,
-        left: 0,
+        bottom: 70,
+        left: 10,
         right: 10
     },
     padding: {
@@ -86,7 +86,7 @@ var Gneiss = {
 
         g.sourceLine = g.chart.append('text')
             .attr('id','sourceLine')
-            .attr('transform','translate(' + g.basePadding.left + ',479)')
+            .attr('transform','translate(' + g.basePadding.left + ',465)')
             .text(g.source);
 
         g.seriesContainer = g.chart.append('g')
