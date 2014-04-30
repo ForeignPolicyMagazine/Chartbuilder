@@ -316,7 +316,7 @@ ChartBuilder = {
             $('#chart_title').clearFieldMessage();
         }
 
-        chart.g.source = 'Source: ' + $("#chart_source").val();
+        chart.g.source = 'PolitiFact | Data: ' + $("#chart_source").val();
         chart.g.sourceLine.text(chart.g.source)
         if (chart.g.source === ''){
             $('#chart_source').fieldMessage('has-error','Chart must have a source.');
