@@ -6,7 +6,7 @@ var chart;
 var SAMPLE_CHART = {
     typePicker: 'column',
     chart_title: 'Sample data',
-    chart_source: 'The Wall Street Journal',
+    chart_source: 'Name an agency and/or website',
     name: 'Sample data',
     created: (new Date()).valueOf(),
     csvInput: "\
