@@ -88,9 +88,9 @@ nav.tools a:hover {
   color: #eee;
 }
 nav.tools img {
-  height: 20px;
+  height: 42px;
   width: auto;
-  border: 1px solid #eee;
+ /* border: 1px solid #eee; */
   margin-right: 5px;
 }
 nav.tools a.toolkit-link {

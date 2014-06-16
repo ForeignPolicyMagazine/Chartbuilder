@@ -18,7 +18,7 @@ Name,First value,Second value\n\
 2013,7.9,5"
 }
 
-$.fn.fieldMessage = function(type, message){
+$.fn.fieldMessage = function (type, message) {
     var formGroup = this.parent().parent();
     this.clearFieldMessage();
     formGroup.addClass(type);
@@ -30,7 +30,7 @@ $.fn.fieldMessage = function(type, message){
     }
 }
 
-$.fn.clearFieldMessage = function(){
+$.fn.clearFieldMessage = function () {
     var formGroup = this.parent().parent();
     formGroup.removeClass('has-error has-warning has-success');
     formGroup.find('.help-block').text('');
@@ -42,15 +42,10 @@ $.fn.clearFieldMessage = function(){
 }
 
 ChartBuilder = {
-    allColors: ['db4730','e58d3c','f0c74f','04807e','4da9da',
-                '6d2217','72461d','776326','04403e','26546d',
-                'a43424','ab6a2d','b3943a','04605d','3a7ea3',
-                'db4730','e58d3c','f0c74f','04807e','4da9da',
-                'e47563','ebaa69','f3d576','4ca09e','7bbfe3',
-                'eea397','f2c69b','f7e3a2','88c0bf','7bbfe3',
-                'f6d1cb','f9e2cc','fbf1d0','c4dfdf','d2eaf6'],
+    allColors: ['f58f22', 'ff0000', '42aaf5', '7bc746',
+    '000000'],
     rawData: '',
-    parseData: function(csv) {
+    parseData: function (csv) {
         /*
          * Parse  data from CSV/TSV.
          *
@@ -64,18 +59,18 @@ ChartBuilder = {
         reader.parse(csv);
 
         // If there aren't at least two columns, return null
-        if(reader.rows[0].length < 2) {
+        if (reader.rows[0].length < 2) {
             throw 'At least two columns are required.';
         }
 
         // If there aren't at least two non empty rows, return null
-        if(reader.rows.length < 2) {
+        if (reader.rows.length < 2) {
             throw 'At least two rows are required.';
         }
 
         return reader.rows;
     },
-    convertTSVtoCSV: function(tsv) {
+    convertTSVtoCSV: function (tsv) {
         /*
          * Convert TSV to CSV.
          */
@@ -94,7 +89,7 @@ ChartBuilder = {
 
         return csv;
     },
-    makeDataSeries: function(rows) {
+    makeDataSeries: function (rows) {
         /*
          * Convert rows from CSV/TSV to data series for gneiss.
          */
@@ -102,10 +97,10 @@ ChartBuilder = {
         var columnNames = [];
         var rowNames = [];
 
-        for(var i = 0; i < rows[0].length; i++) {
+        for (var i = 0; i < rows[0].length; i++) {
             // Make sure we don't have duplicate columns
-            if (columnNames.indexOf(rows[0][i]) >= 0){
-                throw('Duplicate column name: ' + rows[0][i]);
+            if (columnNames.indexOf(rows[0][i]) >= 0) {
+                throw ('Duplicate column name: ' + rows[0][i]);
             }
 
             var obj = {
@@ -115,12 +110,12 @@ ChartBuilder = {
 
             columnNames.push(rows[0][i]);
 
-            for(var j = 1; j < rows.length; j++) {
+            for (var j = 1; j < rows.length; j++) {
                 // If it is the first column, containing the names
-                if(i == 0) {
+                if (i == 0) {
                     // Check for duplicate row names
-                    if (rowNames.indexOf(rows[j][i]) >= 0){
-                        throw('Duplicate row name: ' + rows[j][i]);
+                    if (rowNames.indexOf(rows[j][i]) >= 0) {
+                        throw ('Duplicate row name: ' + rows[j][i]);
                     }
 
                     obj.data.push(rows[j][i]);
@@ -138,10 +133,9 @@ ChartBuilder = {
                             throw "Data should not include unit labels such as $ or %. (You will be able to add them in Step 3.)";
                         }
 
-                        if (isNaN(value)){
+                        if (isNaN(value)) {
                             throw "Value \"" + value + "\" can not be parsed as a number.";
-                        }
-                        else {
+                        } else {
                             value = parseFloat(value);
                         }
                     }
@@ -155,7 +149,7 @@ ChartBuilder = {
 
         return data;
     },
-    transposeData: function() {
+    transposeData: function () {
         /*
          * Transpose rows and columns in the data.
          */
@@ -191,7 +185,7 @@ ChartBuilder = {
 
         ChartBuilder.render();
     },
-    createTable: function(rows) {
+    createTable: function (rows) {
         /*
          * Render an HTML table from data rows, for validation.
          */
@@ -207,7 +201,7 @@ ChartBuilder = {
             }
         };
     },
-    createChartImage: function() {
+    createChartImage: function () {
         /*
          * Create PNG and SVG versions of the chart.
          */
@@ -218,12 +212,12 @@ ChartBuilder = {
 
         var canvasContext = canvas.getContext('2d');
         var svg = $.trim(document.getElementById('chartContainer').innerHTML);
-        canvasContext.drawSvg(svg,0,0,canvas.width,canvas.height);
+        canvasContext.drawSvg(svg, 0, 0, canvas.width, canvas.height);
 
 
         var filename = [];
 
-        if(chart.g.title.length > 0) {
+        if (chart.g.title.length > 0) {
             filename.unshift(chart.g.title)
         }
 
@@ -231,8 +225,8 @@ ChartBuilder = {
 
 
         $('#downloadImageLink')
-            .attr('href',canvas.toDataURL('png'))
-            .attr('download', function() {
+            .attr('href', canvas.toDataURL('png'))
+            .attr('download', function () {
                 return filename + '_chartbuilder.png'
             });
 
@@ -241,8 +235,10 @@ ChartBuilder = {
         svgString = '<?xml version="1.0" encoding="utf-8"?>\n<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">\n<svg ' + svgString.split("<svg ")[1]
 
         $("#downloadSVGLink")
-            .attr("href", "data:text/svg," + encodeURI(svgString.split("PTSerif").join("PT Serif")) )
-            .attr("download", function() { return filename + "_chartbuilder.svg" })
+            .attr("href", "data:text/svg," + encodeURI(svgString.split("PTSerif").join("PT Serif")))
+            .attr("download", function () {
+                return filename + "_chartbuilder.svg"
+            })
 
         ChartBuilder.saveCurrentChart(filename);
 
@@ -250,7 +246,7 @@ ChartBuilder = {
         ChartBuilder.setSavedChartList(charts);
 
     },
-    updateConfigFromUI: function() {
+    updateConfigFromUI: function () {
         /*
          * Update the chart config from the latest UI state.
          */
@@ -276,7 +272,7 @@ ChartBuilder = {
 
             try {
                 var rows = ChartBuilder.parseData(data);
-            } catch(e) {
+            } catch (e) {
                 ChartBuilder.showInvalidData(e);
 
                 return false;
@@ -284,10 +280,10 @@ ChartBuilder = {
 
             try {
                 dataSeries = ChartBuilder.makeDataSeries(rows);
-            } catch(e) {
-               ChartBuilder.showInvalidData(e);
+            } catch (e) {
+                ChartBuilder.showInvalidData(e);
 
-               return false;
+                return false;
             }
 
             ChartBuilder.hideInvalidData();
@@ -301,7 +297,7 @@ ChartBuilder = {
         // Type
         chart.g.type = $("#typePicker").val();
 
-        if (chart.g.type == 'bar'){
+        if (chart.g.type == 'bar') {
             $('#axis-title').text('Horizontal Axis Options');
         } else {
             $('#axis-title').text('Vertical Axis Options');
@@ -310,16 +306,16 @@ ChartBuilder = {
         // Title
         chart.g.title = $("#chart_title").val();
         chart.g.titleLine.text(chart.g.title)
-        if (chart.g.title === ''){
-            $('#chart_title').fieldMessage('has-error','Chart must have a title.');
+        if (chart.g.title === '') {
+            $('#chart_title').fieldMessage('has-error', 'Chart must have a title.');
         } else {
             $('#chart_title').clearFieldMessage();
         }
 
-        chart.g.source = 'PolitiFact.com   |   Data: ' + $("#chart_source").val();
+        chart.g.source = 'Foreign Policy   |   Data: ' + $("#chart_source").val();
         chart.g.sourceLine.text(chart.g.source)
-        if (chart.g.source === ''){
-            $('#chart_source').fieldMessage('has-error','Chart must have a source.');
+        if (chart.g.source === '') {
+            $('#chart_source').fieldMessage('has-error', 'Chart must have a source.');
         } else {
             $('#chart_source').clearFieldMessage();
         }
@@ -331,7 +327,7 @@ ChartBuilder = {
         // Ticks
         var tickInterval = $("#axis_interval").val();
 
-        if (tickInterval !== ''){
+        if (tickInterval !== '') {
             tickInterval = parseFloat(tickInterval);
             if (isNaN(tickInterval)) {
                 tickInterval = null;
@@ -339,7 +335,7 @@ ChartBuilder = {
             } else {
                 chart.calculateYDomain();
 
-                if (tickInterval <= 0){
+                if (tickInterval <= 0) {
                     tickInterval = null;
                     $('#axis_interval').fieldMessage('has-error', 'You must choose a larger tick interval.');
                 } else if (((chart.g.yAxis.domain[1] - chart.g.yAxis.domain[0]) / tickInterval) > 20) {
@@ -358,12 +354,12 @@ ChartBuilder = {
         // Min/max
         var min = $("#right_axis_min").val();
 
-        if (min !== ''){
+        if (min !== '') {
             min = parseFloat(min);
             if (isNaN(min)) {
                 min = null;
                 $('#right_axis_min').fieldMessage('has-error', 'Minimum must be a number.');
-            } else if (min > chart.g.yAxis.extremes[0]){
+            } else if (min > chart.g.yAxis.extremes[0]) {
                 chart.calculateYDomain();
                 chart.g.yAxis.min = min;
                 $('#right_axis_min').fieldMessage('has-error', 'Minimum puts data outside the chart area. Your smallest value is ' + chart.g.yAxis.extremes[0] + '.');
@@ -379,17 +375,17 @@ ChartBuilder = {
 
         var max = $("#right_axis_max").val();
 
-        if (max !== ''){
+        if (max !== '') {
             max = parseFloat(max);
             if (isNaN(max)) {
                 max = null;
                 $('#right_axis_max').fieldMessage('has-error', 'Maximum must be a number');
-            } else if (max < chart.g.yAxis.extremes[1]){
+            } else if (max < chart.g.yAxis.extremes[1]) {
                 chart.calculateYDomain();
                 chart.g.yAxis.max = max;
                 $('#right_axis_max').fieldMessage('has-error', 'Maximum puts data outside the chart area. Your largest value is ' + chart.g.yAxis.extremes[1] + '.');
             } else {
-                if (!isNaN(min) && max < min){
+                if (!isNaN(min) && max < min) {
                     $('#right_axis_max').fieldMessage('has-error', 'Maximum must be greater than Minimum.');
                 } else {
                     chart.g.yAxis.max = max;
@@ -403,7 +399,7 @@ ChartBuilder = {
 
         return true;
     },
-    colorPickerChanged: function() {
+    colorPickerChanged: function () {
         /*
          * Update the chart when a color picker is changed.
          */
@@ -411,7 +407,7 @@ ChartBuilder = {
 
         ChartBuilder.render();
     },
-    render: function() {
+    render: function () {
         /*
          * Redraw the chart and update series options as appropriate.
          */
@@ -436,8 +432,11 @@ ChartBuilder = {
 
             seriesContainer.append(seriesItem);
 
-            var color = s.color ? s.color.replace('#','') : g.colors[i].replace('#','');
-            var picker = seriesItem.find('#' + ChartBuilder.idSafe(s.name) + '_color').colorPicker({ pickerDefault: color, colors:ChartBuilder.allColors });
+            var color = s.color ? s.color.replace('#', '') : g.colors[i].replace('#', '');
+            var picker = seriesItem.find('#' + ChartBuilder.idSafe(s.name) + '_color').colorPicker({
+                pickerDefault: color,
+                colors: ChartBuilder.allColors
+            });
 
             seriesItem.data('index', i);
 
@@ -449,44 +448,45 @@ ChartBuilder = {
 
         chart.g = g;
     },
-    getAllInputData: function() {
-        var d = {}, $el;
-        var elems = $('input:not([id^=colorPicker]), textarea, select:not(#previous_charts)').each(function() {
+    getAllInputData: function () {
+        var d = {},
+            $el;
+        var elems = $('input:not([id^=colorPicker]), textarea, select:not(#previous_charts)').each(function () {
             $el = $(this)
             d[$el.attr('id')] = $el.val()
         })
         return d
     },
-    idSafe: function(s) {
+    idSafe: function (s) {
         s = s.replace(/[^\w\d]+/gi, '-');
 
         return s;
     },
-    showInvalidData: function(e) {
+    showInvalidData: function (e) {
         e = e || 'Data could not be parsed.';
 
         $('#invalidDataSpan').text(e);
         $('#inputDataHeading').addClass('inputDataHInvData');
         $('#invalidDataSpan').removeClass('hide');
     },
-    hideInvalidData: function() {
+    hideInvalidData: function () {
         $('#inputDataHeading').removeClass('inputDataHInvData');
         $('#invalidDataSpan').addClass('hide');
     },
-    getDefaultConfig: function() {
+    getDefaultConfig: function () {
         var chartConfig = {};
 
-        chartConfig.colors = ['#db4730','#e58d3c','#f0c74f','#04807e','#4da9da',
-                            '#6d2217','#72461d','#776326','#04403e','#26546d',
-                            '#a43424','#ab6a2d','#b3943a','#04605d','#3a7ea3',
-                            '#db4730','#e58d3c','#f0c74f','#04807e','#4da9da',
-                            '#e47563','#ebaa69','#f3d576','#4ca09e','#7bbfe3',
-                            '#eea397','#f2c69b','#f7e3a2','#88c0bf','#7bbfe3',
-                            '#f6d1cb','#f9e2cc','#fbf1d0','#c4dfdf','#d2eaf6'];
+        chartConfig.colors = ['#db4730', '#e58d3c', '#f0c74f', '#04807e', '#4da9da',
+                            '#6d2217', '#72461d', '#776326', '#04403e', '#26546d',
+                            '#a43424', '#ab6a2d', '#b3943a', '#04605d', '#3a7ea3',
+                            '#db4730', '#e58d3c', '#f0c74f', '#04807e', '#4da9da',
+                            '#e47563', '#ebaa69', '#f3d576', '#4ca09e', '#7bbfe3',
+                            '#eea397', '#f2c69b', '#f7e3a2', '#88c0bf', '#7bbfe3',
+                            '#f6d1cb', '#f9e2cc', '#fbf1d0', '#c4dfdf', '#d2eaf6'];
 
         return chartConfig;
     },
-    formatDate: function(d) {
+    formatDate: function (d) {
         /*
          * Format a date for display in the chart list.
          */
@@ -504,14 +504,13 @@ ChartBuilder = {
 
         return date + ' ' + time;
     },
-    saveCurrentChart: function(name) {
+    saveCurrentChart: function (name) {
         /*
          * Save the current chart state to local storage as JSON.
          */
         try {
             localStorage['savedCharts'][0]
-        }
-        catch(e) {
+        } catch (e) {
             localStorage['savedCharts'] = JSON.stringify([])
         }
 
@@ -524,13 +523,13 @@ ChartBuilder = {
         allcharts.push(newChart)
         localStorage['savedCharts'] = JSON.stringify(allcharts);
     },
-    loadChart: function(d) {
+    loadChart: function (d) {
         /*
          * Load a chart from JSON representation.
          */
         // Set field values from JSON blog
         for (var key in d) {
-            if(key != 'name' && key != 'created') {
+            if (key != 'name' && key != 'created') {
                 $('#' + key).val(d[key]);
             }
         }
@@ -538,7 +537,7 @@ ChartBuilder = {
         // Render the new chart
         ChartBuilder.render();
     },
-    getSavedCharts: function() {
+    getSavedCharts: function () {
         /*
          * Get a list of saved charts from local storage.
          *
@@ -548,8 +547,7 @@ ChartBuilder = {
 
         try {
             charts = JSON.parse(localStorage['savedCharts']);
-        }
-        catch(e) {
+        } catch (e) {
             // If no charts exist, store demo chart
             charts = [SAMPLE_CHART];
             localStorage['savedCharts'] = JSON.stringify(charts);
@@ -557,7 +555,7 @@ ChartBuilder = {
 
         return charts
     },
-    setSavedChartList: function(charts) {
+    setSavedChartList: function (charts) {
         /*
          * Set the list of saved charts.
          */
@@ -569,14 +567,14 @@ ChartBuilder = {
             .data(charts)
             .enter()
             .append('option')
-            .text(function(d) {
+            .text(function (d) {
                 var created = ChartBuilder.formatDate(new Date(d.created));
-                return d.name ? d.name + ' (' + created  + ')' : 'Untitled Chart (' + created + ')'
+                return d.name ? d.name + ' (' + created + ')' : 'Untitled Chart (' + created + ')'
             })
 
         $('#previous_charts').trigger('chosen:updated');
     },
-    start: function(config) {
+    start: function (config) {
         /*
          * Go!
          */
@@ -587,12 +585,12 @@ ChartBuilder = {
         chart = Gneiss.setup(chartConfig)
 
         $('#previous_charts').chosen()
-            .on('change', function() {
+            .on('change', function () {
                 ChartBuilder.loadChart(d3.select(this.selectedOptions[0]).data()[0])
             });
 
-        $('#createImageButton').click(function() {
-            if(!$('#download-modal').hasClass('in')) {
+        $('#createImageButton').click(function () {
+            if (!$('#download-modal').hasClass('in')) {
                 $('#createImageButton p').text('Reset');
 
                 ChartBuilder.createChartImage();
@@ -613,12 +611,12 @@ ChartBuilder = {
         $('#transpose-data').click(ChartBuilder.transposeData);
 
         // Clicking download closes the download modal
-        $('#downloadImageLink').on('click', function(){
+        $('#downloadImageLink').on('click', function () {
             $('#download-modal').modal('hide');
         });
 
         // Attach reset action
-        $('#reset-form').on('click', function(){
+        $('#reset-form').on('click', function () {
             $('input, textarea').val('');
             $('#csvInput').focus();
             ChartBuilder.render();
@@ -635,10 +633,10 @@ ChartBuilder = {
     }
 };
 
-if($.browser.msie === true){
+if ($.browser.msie === true) {
     alert('Sorry, Chart Builder requires Chrome, Firefox or Safari.');
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     ChartBuilder.start();
 });
