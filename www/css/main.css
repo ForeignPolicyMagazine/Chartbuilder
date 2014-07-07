@@ -337,3 +337,7 @@ a:hover {
         page-break-after: avoid;
     }
 }
+
+#chartContainer {
+    width: 525px;
+}
